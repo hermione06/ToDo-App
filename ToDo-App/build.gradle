@@ -24,6 +24,14 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Apache Tomcat (for embedding Tomcat in your application)
+    implementation 'org.apache.tomcat:tomcat:10.1.13' // Replace with the latest version if needed
+
+    // JSTL (JavaServer Pages Standard Tag Library)
+    implementation 'javax.servlet:jstl:1.2'
+	// WebJars for Bootstrap and jQuery
+    implementation 'org.webjars:bootstrap:5.3.3' 
+    implementation 'org.webjars:jquery:3.7.1' // Update version as needed
 }
 
 tasks.named('test') {
