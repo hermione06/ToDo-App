@@ -32,6 +32,7 @@ dependencies {
 	// WebJars for Bootstrap and jQuery
     implementation 'org.webjars:bootstrap:5.3.3' 
     implementation 'org.webjars:jquery:3.7.1' // Update version as needed
+	implementation 'io.github.cdimascio:dotenv-java:3.1.0'
 }
 
 tasks.named('test') {
