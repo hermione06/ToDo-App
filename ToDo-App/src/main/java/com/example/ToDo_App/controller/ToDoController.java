@@ -21,17 +21,17 @@ public class ToDoController {
     @GetMapping("/viewToDoList")
     public String viewAllToDoItems(Model model, @ModelAttribute("message") String message){
         model.addAttribute("list", service.getAllToDoItems());
-        model.addAttribute("msg", message);
-        return "viewToDoList";
+        model.addAttribute("message", message);
+        return "ViewToDoList";
     }
 
     @PostMapping("/updateToDoStatus")
     public String updateToDoStatus(@PathVariable Long id, RedirectAttributes redirectAttributes){
         if(service.updateStatus(id)){
-            redirectAttributes.addFlashAttribute("message", "Status updated successfully");
+            redirectAttributes.addFlashAttribute("message", "Update Success");
             return "redirect:/viewToDoList";
         }
-        redirectAttributes.addFlashAttribute("message", "Status Update Failed!");
+        redirectAttributes.addFlashAttribute("message", "Update Failure");
         return "redirect:/viewToDoList";
         
     }
@@ -45,12 +45,12 @@ public class ToDoController {
     @PostMapping("/saveToDoItem")
     public String saveToDoItem(ToDo toDo, RedirectAttributes redirectAttributes){
         if (service.saveItem(toDo)){
-            redirectAttributes.addFlashAttribute("message", "Saved Succesfully!");
+            redirectAttributes.addFlashAttribute("message", "Save Success");
             return "redirect:/viewToDoList";
 
 
         }
-        redirectAttributes.addFlashAttribute("message", "Save Failed!");
+        redirectAttributes.addFlashAttribute("message", "Save Failure");
         return "redirect:/addToDoItem";
         
     }
@@ -64,12 +64,12 @@ public class ToDoController {
     @PostMapping("/updateToDoItem")
     public String updateToDoItem(ToDo toDo, RedirectAttributes redirectAttributes){
         if (service.saveItem(toDo)){
-            redirectAttributes.addFlashAttribute("message", "Update Succesfully!");
+            redirectAttributes.addFlashAttribute("message", "Edit Success");
             return "redirect:/viewToDoList";
 
 
         }
-        redirectAttributes.addFlashAttribute("message", "Update Failed!");
+        redirectAttributes.addFlashAttribute("message", "Edit Failure");
         return "redirect:/editToDoItem/"+ toDo.getId();
         
 
@@ -77,9 +77,9 @@ public class ToDoController {
     @GetMapping("/deleteToDoItem/{id}")
     public String deleteToDoItem(@PathVariable Long id, RedirectAttributes redirectAttributes){
         if(service.deleteToDoItem(id)){
-            redirectAttributes.addFlashAttribute("message", "Delete Success!");
+            redirectAttributes.addFlashAttribute("message", "Delete Success");
         }
-        redirectAttributes.addFlashAttribute("message", "Delete Failure!");
+        redirectAttributes.addFlashAttribute("message", "Delete Failure");
         return "redirect:/viewToDoList";
 
 
